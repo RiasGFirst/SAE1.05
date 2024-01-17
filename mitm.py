@@ -14,9 +14,9 @@ def in_sudo_mode():
 
 
 # IP Forwarding
-def allow_ip_forwarding(toggle):
+def allow_ip_forwarding():
     """ Run this function to allow ip forwarding. The packets will flow through your machine, and you'll be able to capture them. Otherwise user will lose connection."""
-    subprocess.run(["sysctl", "-w", f"net.ipv4.ip_forward={toggle}"])
+    subprocess.run(["sysctl", "-w", f"net.ipv4.ip_forward=1"])
     # Load  in sysctl settings from the /etc/sysctl.conf file. 
     subprocess.run(["sysctl", "-p", "/etc/sysctl.conf"])
 
@@ -75,7 +75,7 @@ def attack(target, spoof):
 
 def run_main():
     in_sudo_mode()
-    allow_ip_forwarding("1")
+    allow_ip_forwarding()
 
     parser = argparse.ArgumentParser(description="Host Discovery Script")
     parser.add_argument("-n", "--network", metavar="NETWORK", help="Scan the network to get all the hosts on it.")
@@ -102,7 +102,6 @@ def run_main():
                 time.sleep(2)
 
         except KeyboardInterrupt:
-            allow_ip_forwarding("0")
             print("\n[-] Ctrl + C detected...\nDisconnecting")
 
 if __name__ == "__main__":
