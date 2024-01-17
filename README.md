@@ -58,7 +58,7 @@ cd SAE1.05/
 
 ### 🤖 Running the discover.py
 
-Pour le MITM :
+Pour le discover.py :
 
 L'option -a déclenche la découverte active avec l'adresse IP d'un hôte qui sera donnée en argument, comme le montre l'exemple ci-dessous.
 
@@ -88,7 +88,7 @@ sudo python3 discover.py -a 192.168.1.2 -x /tmp/resultat.txt
 
 ### 🤖 Running the mitm.py
 
-Pour le MITM il faut faire la commande 
+Pour le mitm.py il faut faire la commande 
 
 ```sh
 sudo python3 mitm.py -n IPNETWORK/24
